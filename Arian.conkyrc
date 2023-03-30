@@ -23,13 +23,13 @@ conky.config = {
 
 	--Placement
 
-	alignment = 'middle_right',						-- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
+	alignment = 'bottom_right',						-- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
 												-- middle_left,middle_middle,middle_right,none
 	--Arch Duoscreen
-	--gap_x = -1910,
-	gap_x = 15,									-- pixels between right or left border
+	--gap_x = -1900,
+	gap_x = 25,									-- pixels between right or left border
 	gap_y = 0,									-- pixels between bottom or left border
-	minimum_height = 690,						-- minimum height of window
+	minimum_height = 710,						-- minimum height of window
 	minimum_width = 300,						-- minimum height of window
 	maximum_width = 300,						-- maximum height of window
 
@@ -71,23 +71,23 @@ conky.config = {
 	--Windows
 
 	own_window = true,							-- create your own window to draw
-	own_window_argb_value = 0,			    -- real transparency - composite manager required 0-255
+	own_window_argb_value = 60,			    -- real transparency - composite manager required 0-255
 	own_window_argb_visual = true,				-- use ARGB - composite manager required
 	own_window_colour = '#000000',				-- set colour if own_window_transparent no
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
-	own_window_transparent = true,				-- if own_window_argb_visual is true sets background opacity 0%
+	own_window_transparent = false,				-- if own_window_argb_visual is true sets background opacity 0%
 	own_window_title = 'system_conky',			-- set the name manually  - default conky "hostname"
-	own_window_type = 'normal',				-- if own_window true options are: normal/override/dock/desktop/panel
+	own_window_type = 'desktop',				-- if own_window true options are: normal/override/dock/desktop/panel
 
 
 	--Colours
 
 	default_color = '#D9DDE2',  				-- default color and border color
 	color1 = '#FF0000',
-	color2 = '#597AA1',
+	color2 = '#17e4ff',
 	color3 = '#cccccc',
 	color4 = '#D9BC83',
-	color5 = '#00BFFF',
+	color5 = '#FFFFFF',
 	color6 = '#FFFFFF',
 
 	--Signal Colours
@@ -102,7 +102,8 @@ conky.config = {
 
 conky.text = [[
 ${color6}${voffset 4}${font Bungee:size=36}${alignc}${time %l}:${time %M} ${time %p}${font}${color}
-${color6}${voffset 4}${font Changa One:size=13}${alignc}${time %A} ${time %B} ${time %e}, ${time %Y}${font}${color}
+${color3}${voffset 4}${font Changa One:size=13}${alignc}${time %A} ${time %B} ${time %e}, ${time %Y}${font}${color}
+
 ${color5}${font Roboto:size=10}${voffset 2}S Y S T E M   ${hr 2}${font}${color}
 # ${color2}Distro:${color}${alignr}$sysname ${alignr}${execi 6000 lsb_release -a | grep 'Description'|awk {'print $3, $4, $5'}}
 # ${color2}Kernel:${color}${alignr}${exec uname} ${exec uname -r}
