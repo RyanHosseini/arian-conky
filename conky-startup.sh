@@ -1,2 +1,2 @@
-killall conky
-sleep 20s && conky -c "$HOME/.conky/Arian.conkyrc" &
+conky -c .conky-right & conky -c .conky-left
+
