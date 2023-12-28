@@ -1,6 +1,4 @@
 --[[
-# Arian X Dev
-# My Favorite Conky Theme
 # https://github.com/arianXdev
 ]]
 
@@ -110,10 +108,12 @@ ${color5}${font Roboto:size=10}${voffset 2}S Y S T E M   ${hr 2}${font}${color}
 #Nvidia: ${alignr}${execp  nvidia-smi --query-supported-clocks=gpu_name --format=csv,noheader}
 #Nvidia Driver: ${alignr}${execi 60000 nvidia-smi | grep "Driver Version"| awk {'print $3'}}
 ${color2}Uptime:${color} ${alignr}${uptime}
+
 ${color5}${font Roboto:size=10}P R O C E S S O R S  ${hr 2}${font}${color}
 # ${color2}CPU Freq:${color} $alignr${freq}MHz
 ${color2}CPU Temp:${color} $alignr${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}
-${color2}History:${color} ${alignr}${cpugraph 8,100}
+
+${color2}${color} ${alignr}${cpugraph 20,300}
 ${color2}${offset 30}CPU Core 1:${color} ${alignr}${offset -10}${cpu cpu1}%${alignr}${cpubar cpu1}
 ${color2}${offset 30}CPU Core 2:${color} ${alignr}${offset -10}${cpu cpu2}%${alignr}${cpubar cpu2}
 ${color2}${offset 30}CPU Core 3:${color} ${alignr}${offset -10}${cpu cpu3}%${alignr}${cpubar cpu3}
