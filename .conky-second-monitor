@@ -21,15 +21,16 @@ conky.config = {
 
 	--Placement
 
-	alignment = 'bottom_left',						-- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
+	alignment = 'middle_right',						-- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
 												-- middle_left,middle_middle,middle_right,none
 	--Arch Duoscreen
 	--gap_x = 0,
 	gap_x = 25,									-- pixels between right or left border
 	gap_y = 0,									-- pixels between bottom or left border
 	minimum_height = 710,						-- minimum height of window
-	minimum_width = 300,						-- minimum height of window
-	maximum_width = 300,						-- maximum height of window
+	minimum_width = 1600,						-- minimum height of window
+	maximum_width = 1600,						-- maximum height of window
+	xinerama_head = 2,
 
 	--Graphical
 
@@ -99,68 +100,73 @@ conky.config = {
 };
 
 conky.text = [[
-${color5}${voffset 4}${font Bungee:size=18}${alignc}hardhat-jest ~${exec curl -s https://api.npmjs.org/downloads/point/last-week/hardhat-jest | jq '.downloads'} ${font}${color}
-#${color3}${voffset 4}${font Changa One:size=13}${alignc}${time %A} ${time %B} ${time %e}, ${time %Y}${font}${color}
+#${color6}${voffset 4}${font Bungee:size=40}${alignr}${time %l}:${time %M} ${time %p}${font}${color}
+${color3}${voffset 4}${font Changa One:size=18}${alignc}HARD WORK PAYS ALL THE TIME${font}${color}
+#${color3}${voffset 4}${font Changa One:size=13}${alignc}Have faith in God, Work as hard as you can! He sees...${font}${color}
 
-${color1}${alignc}${execi 600 windscribe status | tail -n 1}
-
-${color2}WIFI SSID:${color} $alignr${execi 240 nmcli dev status | grep 'wifi' | awk '{print $4 " " $5}c'}
-${color2}Packages:${color} $alignr${exec pacman -Q | wc -l}
-
-#${color5}${font Roboto:size=10}${voffset 2}S Y S T E M   ${hr 2}${font}${color}
-# ${color2}Distro:${color}${alignr}$sysname ${alignr}${exec  lsb_release -a | grep 'Description'|awk {'print $3, $4, $5'}}
-# ${color2}Kernel:${color}${alignr}${exec uname} ${exec uname -r}
-#Nvidia: ${alignr}${execp  nvidia-smi --query-supported-clocks=gpu_name --format=csv,noheader}
-#Nvidia Driver: ${alignr}${execi 60000 nvidia-smi | grep "Driver Version"| awk {'print $3'}}
-#${color2}Uptime:${color} ${alignr}${uptime}
-${color5}${font Roboto:size=10}C P U  ${hr 2}${font}${color}
+# ${color2}Distro:${color}${alignr}$sysname ${alignr}${execi 6000 lsb_release -a | grep 'Description'|awk {'print $3, $4, $5'}}
+${color2}${offset 1290} Uptime:${color} ${alignr}${uptime}
+${color2}${offset 1290} Kernel:${color}${alignr} ${exec uname -r}
 # ${color2}CPU Freq:${color} $alignr${freq}MHz
-#${color2}CPU Temp:${color} $alignr${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}
-#${color2}History:${color} ${alignr}${cpugraph 8,100}
-#${color2}${offset 30}CPU Core 1:${color} ${alignr}${offset -10}${cpu cpu1}%${alignr}${cpubar cpu1}
-#${color2}${offset 30}CPU Core 2:${color} ${alignr}${offset -10}${cpu cpu2}%${alignr}${cpubar cpu2}
-#${color2}${offset 30}CPU Core 3:${color} ${alignr}${offset -10}${cpu cpu3}%${alignr}${cpubar cpu3}
-#${color2}${offset 30}CPU Core 4:${color} ${alignr}${offset -10}${cpu cpu4}%${alignr}${cpubar cpu4}
-${color2}Top Processes${goto 222}cpu%${goto 274}mem%${color}
-${voffset 4}     1  -  ${top name 1}${alignr}${goto 170} ${goto 222}${top cpu 1} ${goto 274}${top mem 1}
-     2  -  ${top name 2}${alignr} ${goto 222}${top cpu 2} ${goto 274}${top mem 2}
-     3  -  ${top name 3}${alignr} ${goto 222}${top cpu 3} ${goto 274}${top mem 3}
-     4  -  ${top name 4}${alignr} ${goto 222}${top cpu 4} ${goto 274}${top mem 4}
-     5  -  ${top name 5}${alignr} ${goto 222}${top cpu 5} ${goto 274}${top mem 5}
+
+${color2}${color} ${alignr}${cpugraph 20,300}
+${color2}${offset 1300}CPU Core 1:${color} ${alignr}${offset -10}${cpu cpu1}%${alignr}${cpubar cpu1}
+${color2}${offset 1300}CPU Core 2:${color} ${alignr}${offset -10}${cpu cpu2}%${alignr}${cpubar cpu2}
+${color2}${offset 1300}CPU Core 3:${color} ${alignr}${offset -10}${cpu cpu3}%${alignr}${cpubar cpu3}
+${color2}${offset 1300}CPU Core 4:${color} ${alignr}${offset -10}${cpu cpu4}%${alignr}${cpubar cpu4}
 
 
 
-${color5}${color5}${font Roboto:size=10}NT   C U R R E N T   S T A T U S   ${hr 2}${font}${color}
-${color2}${offset 30}IP ADDR: ${color} ${alignr}${offset -10$}${execi 360 windscribe status | grep "IP:" | cut -d ' ' -f 2 | cut -c 1-10}
-${color2}${offset 30}Eth Up:${color} ${alignr}${offset -10$}${upspeed wlo1}${alignr}${upspeedgraph wlo1 8,100}
-${color2}${offset 30}Eth Down:${color} ${alignr}${offset -10$}${downspeed wlo1}${alignr}${downspeedgraph wlo1 8,100}
+${color2}${offset 1300}RAM: ${color}${alignr}${offset -10}${mem} / ${memmax}${alignr}${membar}
+${color2}${offset 1300}Swap:${color} ${alignr}${offset -10}${swap} / ${swapmax}${alignr}${swapbar}
+
+
+${offset 90}                    -`
+${offset 90}                   .o+`
+${offset 90}                  `ooo/
+${offset 90}                 `+oooo:
+${offset 90}                `+oooooo:
+${offset 90}                -+oooooo+:
+${offset 90}              `/:-:++oooo+:
+${offset 90}             `/++++/+++++++:
+${offset 90}            `/++++++++++++++:
+${offset 90}           `/+++ooooooooooooo/`
+${offset 90}          ./ooosssso++osssssso+`
+${offset 90}         .oossssso-````/ossssss+`
+${offset 90}        -osssssso.      :ssssssso.
+${offset 90}       :osssssss/        osssso+++.
+${offset 90}      /ossssssss/        +ssssooo/-
+${offset 90}    `/ossssso+/:-        -:/+osssso+-
+${offset 90}   `+sso+:-`                 `.-/+oso:
+${offset 90}  `++:.                           `-/+/
+${offset 90}  .`                                 `/
+${offset 90} 
 
 
 
-${color5}${font Roboto:size=10}M E M O R Y   ${hr 2}${font}${color}
-${color2}${offset 30}RAM: ${color}${alignr}${offset -10}${mem} / ^^^${alignr}${membar}
-#${color2}${offset 30}Swap:${color} ${alignr}${offset -10}${swap} / ${swapmax}${alignr}${swapbar}
+#${color2}Top Processes${goto 222}cpu%${goto 274}mem%${color}
+#${voffset 4}     1  -  ${top name 1}${alignr}${goto 170} ${goto 222}${top cpu 1} ${goto 274}${top mem 1}
+#     2  -  ${top name 2}${alignr} ${goto 222}${top cpu 2} ${goto 274}${top mem 2}
+#     3  -  ${top name 3}${alignr} ${goto 222}${top cpu 3} ${goto 274}${top mem 3}
+#     4  -  ${top name 4}${alignr} ${goto 222}${top cpu 4} ${goto 274}${top mem 4}
+#     5  -  ${top name 5}${alignr} ${goto 222}${top cpu 5} ${goto 274}${top mem 5}
 
-${color2}Top Processes${goto 222}cpu%${goto 274}mem%${color}
-${voffset 4}     1  -  ${top_mem name 1}${alignr}${goto 170} ${goto 222}${top_mem cpu 1} ${goto 274}${top_mem mem 1}
-     2  -  ${top_mem name 2}${alignr}${goto 170} ${goto 222}${top_mem cpu 2} ${goto 274}${top_mem mem 2}
-     3  -  ${top_mem name 3}${alignr}${goto 170} ${goto 222}${top_mem cpu 3} ${goto 274}${top_mem mem 3}
-     4  -  ${top_mem name 4}${alignr}${goto 170} ${goto 222}${top_mem cpu 4} ${goto 274}${top_mem mem 4}
-     5  -  ${top_mem name 5}${alignr}${goto 170} ${goto 222}${top_mem cpu 5} ${goto 274}${top_mem mem 5}
 
-${color5}${font Roboto:size=10}D R I V E S   ${hr 2}${font}${color}
-${offset 30}${color2}Root:${color} ${alignr}${offset -10}${fs_used /} / ${fs_size /}${alignr}${fs_bar /}
-${offset 30}${color2}Home:${color} ${alignr}${offset -10}${fs_used /home} / ${fs_size /home}${alignr}${fs_bar /home}
-${offset 30}${color2}I/O Read (Root):${color} ${alignr}${offset -10}${diskio_read /}${alignr}${diskiograph_read home 8,100}
-${offset 30}${color2}I/O Write (H-P):${color} ${alignr}${offset -10}${diskio_write /home}${alignr}${diskiograph_write home 8,100}
+#${color5}${font Roboto:size=10}D R I V E S   ${hr 2}${font}${color}
+#${offset 30}${color2}Root:${color} ${alignr}${offset -10}${fs_used /} / ${fs_size /}${alignr}${fs_bar /}
+#${offset 30}${color2}Home:${color} ${alignr}${offset -10}${fs_used /home} / ${fs_size /home}${alignr}${fs_bar /home}
+# ${offset 30}${color2}I/O Read:${color} ${alignr}${offset -10}${diskio_read /home}${alignr}${diskiograph_read home 8,100}
+# ${offset 30}${color2}I/O Write:${color} ${alignr}${offset -10}${diskio_write /home}${alignr}${diskiograph_write home 8,100}
 # ${offset 30}${color2}256nvme :${color} ${alignr}${offset -10}${fs_used /home/titus/256nvme} / ${fs_size /home/titus/256nvme}${alignr}${fs_bar}
 # ${offset 30}${color2}I/O Read:${color} ${alignr}${offset -10}${diskio_read /dev/nvme1n1p1}${alignr}${diskiograph_read nvme1n1p1 8,100}
 # ${offset 30}${color2}I/O Write:${color} ${alignr}${offset -10}${diskio_write /dev/nvme1n1p1}${alignr}${diskiograph_write nvme1n1p1 8,100}
 # ${offset 30}${color2}Storage :${color} ${alignr}${offset -10}${fs_used /home/titus/1tb} / ${fs_size /home/titus/1tb}${alignr}${fs_bar /home/titus/1tb}
 # ${offset 30}${color2}I/O Read:${color} ${alignr}${offset -10}${diskio_read /dev/sda5}${alignr}${diskiograph_read sda5 8,100}
 # ${offset 30}${color2}I/O Write:${color} ${alignr}${offset -10}${diskio_write /dev/sda5}${alignr}${diskiograph_write sda5 8,100}
-
-
+# ${color5}${color5}${font Roboto:size=10}N E T W O R K   ${hr 2}${font}${color}
+# ${color2}${offset 30}IP: ${color} ${alignr}${offset -10$}${addrs tun0}
+# ${color2}${offset 30}Eth Up:${color} ${alignr}${offset -10$}${upspeed tun0}${alignr}${upspeedgraph tun0 8,100}
+# ${color2}${offset 30}Eth Down:${color} ${alignr}${offset -10$}${downspeed tun0}${alignr}${downspeedgraph tun0 8,100}
 #${font Roboto:size=10}N V I D I A   ${hr 2}${font}
 #${font Roboto:size=10,weight:bold}${color5}${execp  nvidia-smi --query-supported-clocks=gpu_name --format=csv,noheader}${font}
 #${font StyleBats:size=20}u${font}${offset 8}${voffset -12}GPU Temp ${alignr}${execi 60 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader} °C

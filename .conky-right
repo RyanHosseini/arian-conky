@@ -132,7 +132,8 @@ ${voffset 4}     1  -  ${top name 1}${alignr}${goto 170} ${goto 222}${top cpu 1}
 
 
 ${color5}${font Roboto:size=10}M E M O R Y   ${hr 2}${font}${color}
-${color2}${offset 30}RAM: ${color}${alignr}${offset -10}${mem} / ${memmax}${alignr}${membar}
+${color2}${offset 30}RAM: ${color}${alignr}${offset -10}${mem} / UNKNOWN${alignr}${membar}
+#${color2}${offset 30}RAM: ${color}${alignr}${offset -10}${mem} / ${memmax}${alignr}${membar}
 ${color2}${offset 30}Swap:${color} ${alignr}${offset -10}${swap} / ${swapmax}${alignr}${swapbar}
 
 ${color2}Top Processes${goto 222}cpu%${goto 274}mem%${color}
